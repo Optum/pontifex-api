@@ -1,0 +1,20 @@
+{
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "patch"
+      ],
+      "route": "environments/{id}/permissions"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "scriptFile": "../dist/EnvironmentUpdatePermissions/index.js"
+}
