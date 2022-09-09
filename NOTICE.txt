@@ -1,9 +1,9 @@
-<Insert Project Name Here>
+pontifex-api
 Copyright 2022 Optum
 
 Project Description:
 ====================
-<Short description of your project>
+Typescript Azure Function API for Pontifex
 
 Author(s):
-<List the names and GitHub IDs of the original project authors>
+Alexander Aavang - @aaavang
