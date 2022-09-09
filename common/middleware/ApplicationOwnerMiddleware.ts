@@ -1,4 +1,4 @@
-import { AuthenticatedContext } from "@aaavang/azure-functions-auth";
+import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { AzureFunction } from "@azure/functions";
 import ApplicationService from "../services/ApplicationService";
 

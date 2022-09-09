@@ -1,4 +1,4 @@
-import { AuthorizeOptions, requireAuthorization } from "@aaavang/azure-functions-auth";
+import { AuthorizeOptions, requireAuthorization } from "@optum/azure-functions-auth";
 import { AzureFunction } from "@azure/functions";
 
 export function AuthorizationMiddleware(func: AzureFunction, requiredRole?: string) {

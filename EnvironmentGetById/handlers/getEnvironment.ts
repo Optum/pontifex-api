@@ -1,4 +1,4 @@
-import { Context, HttpRequest } from "@optum/functions";
+import { Context, HttpRequest } from "@azure/functions";
 import { Handler } from "../../common/interfaces/Handler";
 import EnvironmentService from "../../common/services/EnvironmentService";
 import { SingletonPontifexClient } from "../../common/SingletonPontifexClient";
