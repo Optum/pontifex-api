@@ -1,4 +1,4 @@
-import { AuthenticatedContext } from "@aaavang/azure-functions-auth";
+import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { v4 as uuid } from "uuid"
 import { AuditService } from "../interfaces/services/audit-service/AuditService";
 import { PontifexAuditEvent } from "../interfaces/services/audit-service/models/AuditService";

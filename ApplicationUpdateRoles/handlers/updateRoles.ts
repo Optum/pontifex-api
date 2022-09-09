@@ -1,4 +1,4 @@
-import { AuthenticatedContext } from "@aaavang/azure-functions-auth";
+import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { HttpRequest } from "@azure/functions";
 import { AppRole } from "@microsoft/microsoft-graph-types";
 import { v4 as uuid } from "uuid"

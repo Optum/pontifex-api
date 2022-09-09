@@ -1,4 +1,4 @@
-import { AuthenticatedContext } from "@aaavang/azure-functions-auth";
+import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { ApiEndpointService } from "../interfaces/services/api-endpoint-service/ApiEndpointService";
 import {
     PontifexApiEndpoint,

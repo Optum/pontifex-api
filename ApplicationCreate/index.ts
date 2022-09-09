@@ -1,4 +1,4 @@
-import { AuthenticatedContext, JwtToken } from "@aaavang/azure-functions-auth";
+import { AuthenticatedContext, JwtToken } from "@optum/azure-functions-auth";
 import { HttpRequest } from "@azure/functions";
 import { AuthorizationMiddleware } from "../common/middleware/AuthorizationMiddleware";
 import { MiddlewareComposer } from "../common/middleware/MiddlewareComposer";

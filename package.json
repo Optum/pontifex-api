@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@azure/cosmos": "^3.15.1",
-    "@optum-pontifex/pontifex-aad": "^1.1.1",
-    "@optum-pontifex/azure-functions-auth": "^1.0.5",
+    "@optum/pontifex-aad": "^1.1.1",
+    "@optum/azure-functions-auth": "^1.0.5",
     "@types/gremlin": "^3.5.2",
     "@types/nodemailer": "^6.4.4",
     "gremlin": "^3.5.2",

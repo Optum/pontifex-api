@@ -1,10 +1,11 @@
+import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { Context, HttpRequest } from "@azure/functions";
 import { Handler } from "../../common/interfaces/Handler";
 import { SingletonPontifexClient } from "../../common/SingletonPontifexClient";
 import { ApplicationUpdateRolesRequest } from "../models/ApplicationUpdateRolesRequest";
 const pontifex = SingletonPontifexClient.Instance
 
-export function generateHandler(context: Context): Handler {
+export function generateHandler(context: AuthenticatedContext): Handler {
     context.log("Generating grantAccess handler")
 
     const handler = async (req: HttpRequest) => {
