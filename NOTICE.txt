@@ -1,0 +1,9 @@
+pontifex-api
+Copyright 2022 Optum
+
+Project Description:
+====================
+Typescript Azure Function API for Pontifex
+
+Author(s):
+Alexander Aavang - @aaavang
