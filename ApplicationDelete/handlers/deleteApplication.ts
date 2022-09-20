@@ -20,13 +20,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
                 status: 204,
                 body: resp
             }
-            context.done()
         } catch (e) {
             context.log.error(`got error when deleting application ${id}`, e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 

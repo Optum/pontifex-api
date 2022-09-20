@@ -102,13 +102,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
             context.res = {
                 status: 204
             }
-            context.done()
         } catch (e) {
             context.log.error(`got error when add permissions to application ${id}`, e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 

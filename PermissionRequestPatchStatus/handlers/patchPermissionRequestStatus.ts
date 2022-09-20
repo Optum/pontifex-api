@@ -21,7 +21,9 @@ export function generateHandler(context: AuthenticatedContext): Handler {
 
         try {
             const currentPr = await PermissionRequestService.get(id)
+            context.log("got currentPr")
             const owners = await ApiEndpointService.getOwners(currentPr.targetEndpoint.id)
+            context.log("got owners")
 
             // TODO: create a generic "isOwner" utility that recursively finds all owners for any resource
             if (!owners.some(owner => owner.id === context.jwtToken.oid as string)) {
@@ -52,13 +54,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
                     permissionRequest
                 }
             }
-            context.done()
         } catch (e) {
-            context.log.error(`got error when getting permission request ${id}`, e)
+            context.log.error(`got error when patching permission request status ${id}`, e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 

@@ -21,13 +21,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
                     user
                 }
             }
-            context.done()
         } catch (e) {
-            context.log.error(`got error when getting permission request ${id}`, e)
+            context.log.error(`got error when getting user ${id}`, e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 

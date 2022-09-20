@@ -1,11 +1,11 @@
-import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { Context, HttpRequest } from "@azure/functions";
 import { Handler } from "../../common/interfaces/Handler";
 import { SingletonPontifexClient } from "../../common/SingletonPontifexClient";
 import { ApplicationUpdateRolesRequest } from "../models/ApplicationUpdateRolesRequest";
+
 const pontifex = SingletonPontifexClient.Instance
 
-export function generateHandler(context: AuthenticatedContext): Handler {
+export function generateHandler(context: Context): Handler {
     context.log("Generating grantAccess handler")
 
     const handler = async (req: HttpRequest) => {
@@ -24,13 +24,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
             context.res = {
                 status: 204
             }
-            context.done()
         } catch (e) {
             context.log.error(`got error when add roles to application ${id}`, e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 

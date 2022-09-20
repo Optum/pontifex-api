@@ -19,13 +19,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
                     pendingPermissionRequests
                 }
             }
-            context.done()
         } catch (e) {
             context.log.error(`got error when getting pending permission requests for user, ${context.jwtToken.oid}`, e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 

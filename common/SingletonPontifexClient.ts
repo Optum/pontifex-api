@@ -1,4 +1,4 @@
-import { PontifexAAD } from "@optum/pontifex-aad";
+import { PontifexAAD } from "@optum-pontifex/pontifex-aad";
 
 export class SingletonPontifexClient {
     private static _instance: PontifexAAD

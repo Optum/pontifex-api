@@ -84,7 +84,8 @@ export function generateService(context: AuthenticatedContext): PermissionReques
                     type: 'permissionRequest',
                     requestor: request.requestor,
                     createDate: request.createDate,
-                    status: request.status
+                    status: request.status,
+                    roleAssignmentId: ""
                 }
             })
 
@@ -154,13 +155,17 @@ export function generateService(context: AuthenticatedContext): PermissionReques
                 case 'APPROVED':
                     const roleAssignmentId = await pontifex.servicePrincipal.grantPermission(clientServicePrincipal.id, resourceServicePrincipal.id, bundle.targetEndpoint.id)
 
-                    context.log(`granted permission and received roleAssingmentId, ${roleAssignmentId}`)
+                    context.log(`granted permission and received roleAssignmentId, ${roleAssignmentId}`)
 
                     bundle.permissionRequest.roleAssignmentId = roleAssignmentId
                     break
                 case 'REJECTED':
-                    await pontifex.servicePrincipal.revokePermission(resourceServicePrincipal.id, bundle.permissionRequest.roleAssignmentId)
-                    bundle.permissionRequest.roleAssignmentId = null
+                    context.log(`revoking permission ${resourceServicePrincipal.id} ${bundle.permissionRequest.roleAssignmentId}`)
+                    if (bundle.permissionRequest.roleAssignmentId && bundle.permissionRequest.roleAssignmentId !== "") {
+                        context.log("calling AAD to revoke")
+                        await pontifex.servicePrincipal.revokePermission(resourceServicePrincipal.id, bundle.permissionRequest.roleAssignmentId)
+                        bundle.permissionRequest.roleAssignmentId = ""
+                    }
                     break
             }
 

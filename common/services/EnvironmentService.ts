@@ -55,8 +55,9 @@ export default {
             pk: environment.id,
             defaultProperties: {
                 type: "environment",
-                name: environment.name
-            }
+                name: environment.name,
+                level: environment.level
+            },
         })
 
         return PontifexEnvironmentFromGremlin(vertex)

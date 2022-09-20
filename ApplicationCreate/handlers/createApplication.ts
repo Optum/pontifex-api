@@ -56,7 +56,6 @@ export function generateHandler(context: AuthenticatedContext): Handler {
                 context.log("service principal created")
                 const pontifexEnvironment: PontifexEnvironment = {
                     id: application.id, name: application.displayName, level: environment
-
                 }
                 const env = await EnvironmentService.update(pontifexEnvironment)
                 await EnvironmentService.addApplicationAssociation(pontifexApp.id, env.id)
@@ -66,13 +65,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
                 status: 201,
                 body: pontifexApp
             }
-            context.done()
         } catch (e) {
             context.log.error("got error when creating application", e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 

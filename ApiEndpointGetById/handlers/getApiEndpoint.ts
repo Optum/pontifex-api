@@ -18,13 +18,11 @@ export function generateHandler(context: AuthenticatedContext): Handler {
                 status: 200,
                 body: bundle
             }
-            context.done()
         } catch (e) {
             context.log.error(`got error when getting api endpoint request ${id}`, e)
             context.res = {
                 status: 400
             }
-            context.done()
         }
     }
 
