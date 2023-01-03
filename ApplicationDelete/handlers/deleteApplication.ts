@@ -1,11 +1,13 @@
 import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { HttpRequest } from "@azure/functions";
 import { Handler } from "../../common/interfaces/Handler";
-import ApplicationService from "../../common/services/ApplicationService";
-
+import { generateService as generateApplicationService } from "../../common/services/ApplicationService";
 
 export function generateHandler(context: AuthenticatedContext): Handler {
     context.log("Generating deleteApplication handler")
+
+    const ApplicationService = generateApplicationService(context)
+
     const handler = async (req: HttpRequest) => {
         const {id} = context.bindingData
 

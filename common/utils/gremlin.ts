@@ -12,6 +12,8 @@ export interface Connections {
     "owned by"?: Resource               // app -> user
     "has event"?: Resource              // ? -> event
     "is event for"?: Resource           // event -> ?
+    "has password"?: Resource           // app -> password
+    "is password for"?: Resource        // password -> app
 }
 
 export interface Resource {
@@ -21,6 +23,7 @@ export interface Resource {
     permissionRequest?: GremlinVertex[]
     endpoint?: GremlinVertex[]
     event?: GremlinVertex[]
+    password?: GremlinVertex[]
 }
 
 export interface GremlinVertex {

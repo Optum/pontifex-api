@@ -5,8 +5,8 @@ import { Handler } from "../../common/interfaces/Handler";
 import { PontifexApplication } from "../../common/interfaces/services/application-service/models/PontifexApplication";
 import { PontifexEnvironment } from "../../common/interfaces/services/environment-service/models/PontifexEnvironment";
 import { PontifexUser } from "../../common/interfaces/services/user-service/models/PontifexUser";
-import AppService from "../../common/services/ApplicationService";
-import EnvironmentService from "../../common/services/EnvironmentService";
+import { generateService as generateApplicationService } from "../../common/services/ApplicationService";
+import { generateService as generateEnvironmentService } from "../../common/services/EnvironmentService";
 import UserService from "../../common/services/UserService";
 import { SingletonPontifexClient } from "../../common/SingletonPontifexClient";
 import { CreateApplicationRequest } from "../models/CreateApplicationRequest";
@@ -16,6 +16,10 @@ const pontifex = SingletonPontifexClient.Instance
 
 export function generateHandler(context: AuthenticatedContext): Handler {
     context.log("Generating handler")
+
+    const EnvironmentService = generateEnvironmentService(context)
+    const ApplicationService = generateApplicationService(context)
+
     const handler = async (req: HttpRequest) => {
         const request: CreateApplicationRequest = req.body
         context.log(`creating application with name: ${request.applicationName}`)
@@ -32,14 +36,14 @@ export function generateHandler(context: AuthenticatedContext): Handler {
 
             } as PontifexApplication
 
-            await AppService.update(pontifexApp)
+            await ApplicationService.update(pontifexApp)
             const user: PontifexUser = {
                 id: jwtToken.oid as string,
                 name: jwtToken.name as string,
                 email: jwtToken.preferred_username as string
             }
             await UserService.update(user)
-            await AppService.addUserOwnerAssociation(pontifexApp.id, jwtToken.oid as string)
+            await ApplicationService.addUserOwnerAssociation(pontifexApp.id, jwtToken.oid as string)
 
             for (const environment of request.environments) {
                 const application = await pontifex.application.create({

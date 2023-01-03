@@ -1,6 +1,6 @@
 {
   "name": "@optum/pontifex-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "tsc",
     "build:production": "npm install && npm run prestart && npm prune --production",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@azure/cosmos": "^3.15.1",
-    "@optum/pontifex-aad": "^1.1.1",
+    "@optum/pontifex-aad": "^1.2.3",
     "@optum/azure-functions-auth": "^1.0.5",
     "@types/gremlin": "^3.5.2",
     "@types/nodemailer": "^6.4.4",

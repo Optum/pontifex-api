@@ -13,8 +13,8 @@ const handler = async function (context: AuthenticatedContext, req: HttpRequest)
 }
 
 const composer = new MiddlewareComposer(handler)
+composer.add(ApplicationOwnerMiddleware)
 composer.add(AuthorizationMiddleware)
 composer.add(WebErrorMiddleware)
-composer.add(ApplicationOwnerMiddleware)
 
 module.exports = composer.compose()

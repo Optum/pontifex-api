@@ -1,12 +1,13 @@
-import { Context, HttpRequest } from "@azure/functions";
+import { HttpRequest } from "@azure/functions";
+import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { Handler } from "../../common/interfaces/Handler";
-import EnvironmentService from "../../common/services/EnvironmentService";
-import { SingletonPontifexClient } from "../../common/SingletonPontifexClient";
+import { generateService as generateEnvironmentService } from "../../common/services/EnvironmentService";
 
-const pontifex = SingletonPontifexClient.Instance
-
-export function generateHandler(context: Context): Handler {
+export function generateHandler(context: AuthenticatedContext): Handler {
     context.log("Generating getEnvironment handler")
+
+    const EnvironmentService = generateEnvironmentService(context)
+
     const handler = async (req: HttpRequest) => {
         const {id} = context.bindingData
         context.log(`get environment with objectId: ${id}`)

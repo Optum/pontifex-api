@@ -6,7 +6,7 @@ import { Handler } from "../../common/interfaces/Handler";
 import { PontifexApiEndpoint } from "../../common/interfaces/services/api-endpoint-service/models/PontifexApiEndpoint";
 import { PontifexAuditEvent } from "../../common/interfaces/services/audit-service/models/AuditService";
 import { generateService } from "../../common/services/ApiEndpointService";
-import ApplicationService from "../../common/services/ApplicationService";
+import { generateService as generateApplicationService } from "../../common/services/ApplicationService";
 import { generateService as generateAuditService } from "../../common/services/AuditService";
 import { SingletonPontifexClient } from "../../common/SingletonPontifexClient";
 import { omit } from "../../common/utils/obj";
@@ -19,6 +19,7 @@ export function generateHandler(context: AuthenticatedContext): Handler {
 
     const ApiEndpointService = generateService(context)
     const AuditService = generateAuditService(context)
+    const ApplicationService = generateApplicationService(context)
 
     async function removeRoles(id: string, existingAppRoles: SensitiveAppRole[], rolesToRemove: AppRole[]) {
         const appRoles: AppRole[] = []

@@ -1,5 +1,8 @@
 import { PontifexAuditEvent } from "../audit-service/models/AuditService";
-import { PontifexApplication, PontifexApplicationBundle } from "./models/PontifexApplication";
+import {
+    PontifexApplication,
+    PontifexApplicationBundle,
+} from "./models/PontifexApplication";
 
 export interface ApplicationService {
     get: (id: string) => Promise<PontifexApplicationBundle>

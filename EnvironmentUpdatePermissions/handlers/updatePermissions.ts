@@ -8,8 +8,8 @@ import {
 } from "../../common/interfaces/services/permission-request-service/models/PontifexPermissionRequest";
 import { generateService as generateApiEndpointService } from "../../common/services/ApiEndpointService";
 import { generateService as generateAuditService } from "../../common/services/AuditService";
-import EnvironmentService from "../../common/services/EnvironmentService";
 import { generateService as generatePermissionRequestService } from "../../common/services/PermissionRequestService";
+import { generateService as generateEnvironmentService } from "../../common/services/EnvironmentService";
 import UserService from "../../common/services/UserService";
 import { SingletonPontifexClient } from "../../common/SingletonPontifexClient";
 import { sendRequestEmails } from "../../common/utils/email";
@@ -23,6 +23,7 @@ export function generateHandler(context: AuthenticatedContext): Handler {
     const PermissionRequestService = generatePermissionRequestService(context)
     const ApiEndpointService = generateApiEndpointService(context)
     const AuditService = generateAuditService(context)
+    const EnvironmentService = generateEnvironmentService(context)
 
     const handler = async (req: HttpRequest) => {
         const {id} = context.bindingData

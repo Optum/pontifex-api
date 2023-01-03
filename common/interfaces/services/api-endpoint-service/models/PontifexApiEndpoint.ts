@@ -17,6 +17,6 @@ export function PontifexApiEndpointFromGremlin(vertex: any): PontifexApiEndpoint
     return {
         id: vertex["id"],
         name: vertex["properties"]["name"][0]["value"],
-        sensitive: vertex["properties"]["sensitive"][0]["value"]
+        sensitive: vertex["properties"]["sensitive"]?.[0]["value"]
     }
 }

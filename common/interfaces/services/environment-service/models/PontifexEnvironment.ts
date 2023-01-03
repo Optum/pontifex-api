@@ -1,5 +1,6 @@
 import { PontifexApiEndpoint } from "../../api-endpoint-service/models/PontifexApiEndpoint";
 import { PontifexApplication } from "../../application-service/models/PontifexApplication";
+import { PontifexPassword } from "../../password-service/models/Password";
 import { PontifexPermissionRequest } from "../../permission-request-service/models/PontifexPermissionRequest";
 
 export interface PontifexEnvironment {
@@ -13,6 +14,7 @@ export interface PontifexEnvironmentBundle {
     endpoints: PontifexApiEndpoint[]
     permissionRequests: PontifexPermissionRequest[]
     application: PontifexApplication
+    passwords: PontifexPassword[]
 }
 
 export function PontifexEnvironmentFromGremlin(vertex: any): PontifexEnvironment {

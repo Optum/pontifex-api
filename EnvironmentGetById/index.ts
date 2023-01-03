@@ -1,6 +1,7 @@
 import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { HttpRequest } from "@azure/functions";
 import { AuthorizationMiddleware } from "../common/middleware/AuthorizationMiddleware";
+import { EnvironmentOwnerMiddleware } from "../common/middleware/EnvironmentOwnerMiddleware";
 import { MiddlewareComposer } from "../common/middleware/MiddlewareComposer";
 import { WebErrorMiddleware } from "../common/middleware/WebErrorMiddleware";
 import { generateHandler } from "./handlers/getEnvironment"
@@ -12,6 +13,7 @@ const handler = async function (context: AuthenticatedContext, req: HttpRequest)
 }
 
 const composer = new MiddlewareComposer(handler)
+composer.add(EnvironmentOwnerMiddleware)
 composer.add(AuthorizationMiddleware)
 composer.add(WebErrorMiddleware)
 

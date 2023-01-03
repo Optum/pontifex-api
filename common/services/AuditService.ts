@@ -5,8 +5,6 @@ import { PontifexAuditEvent } from "../interfaces/services/audit-service/models/
 import { SingletonCosmosClient } from "../SingletonCosmosClient";
 import { upsertEdge, upsertVertex } from "../utils/gremlin";
 
-const cosmos = SingletonCosmosClient.Instance
-
 export function generateService(context: AuthenticatedContext): AuditService {
 
     const id = uuid()

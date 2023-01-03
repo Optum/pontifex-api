@@ -1,10 +1,13 @@
 import { AuthenticatedContext } from "@optum/azure-functions-auth";
 import { HttpRequest } from "@azure/functions";
 import { Handler } from "../../common/interfaces/Handler";
-import ApplicationService from "../../common/services/ApplicationService";
+import { generateService as generateApplicationService } from "../../common/services/ApplicationService";
 
 export function generateHandler(context: AuthenticatedContext): Handler {
     context.log("Generating getApplications handler")
+
+    const ApplicationService = generateApplicationService(context)
+
     const handler = async (req: HttpRequest) => {
         context.log(`get applications for user with id: ${context.jwtToken.oid}`)
 
